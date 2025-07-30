@@ -24,3 +24,29 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+/* Light theme class names */
+
+.text-light{
+  color: #0a0a0a;
+}
+
+.desc-light{
+  color: #444;
+}
+
+.bg-primary{
+  background-color: #F43F5E;
+}
+
+.fore-primary{
+  color: #F43F5E;
+}
+
+/* Dark theme class name */
+
+.text-dark{
+  color: #fff;
+}
+.desc-dark{
+  color: #ccc;
+}
