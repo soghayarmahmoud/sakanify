@@ -148,8 +148,8 @@ const ApartmentDetailPage = ({ params }) => {
 
     return (
         <main className="p-8 h-full" dir="rtl">
-            <div className="grid grid-cols-12 gap-3 justify-between items-center bg-white rounded-lg shadow-xl ">
-                <div className="relative h-96 col-span-6">
+            <div className="grid lg:grid-cols-12 gap-3 md:grid-cols-1 h-full sm:grid-cols-1 justify-between items-center bg-white rounded-lg shadow-xl ">
+                <div className="relative h-96 col-span-6 sm:grid-span-1 md:grid-span-1 ">
 
                     <ImageSlider slides={slidesData} ></ImageSlider>
 
@@ -157,7 +157,7 @@ const ApartmentDetailPage = ({ params }) => {
 
                 </div>
 
-                <div className="p-6 col-span-6">
+                <div className="p-6 col-span-6 sm:grid-span-1 md:grid-span-1">
                     <h1 className="text-4xl font-extrabold text-gray-800 mb-4">{apartment.title}</h1>
                     <p className="text-2xl text-gray-600 mb-6">{apartment.description}</p>
                     <div className="flex items-baseline mb-6">
