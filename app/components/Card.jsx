@@ -2,12 +2,13 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 
 
-
-const Card = ({ title, description, imageUrl, deletedPrice, price  }) => {
+const Card = ({ title,id,  description, imageUrl, deletedPrice, price  }) => {
     return (
+         <Link href={`/apartments/${id}`}>
         <div className="bg-[#eee] rounded-lg shadow-lg p-4  w-[300px] m-2 " dir='rtl'>
             <div className='h-80 md:h-80 rounded-xl relative group' style={{backgroundImage: `url(${imageUrl})`, backgroundSize: 'cover'}}>
 
@@ -24,6 +25,7 @@ const Card = ({ title, description, imageUrl, deletedPrice, price  }) => {
             </div>
             </div>
         </div>
+        </Link>
     );
 }
 
