@@ -1,12 +1,27 @@
+"use client";
+
 import React from 'react';
-import Link from 'next/link';
+import { notFound } from 'next/navigation';
+// Import the slider components and its CSS
+import 'react-slideshow-image/dist/styles.css';
+import ImageSlider from '@/app/components/ImageSlider';
     const apartments = [
         // ... (your existing apartments array)
         {
             id: 1,
             title: "الحي الأول",
             description: "شقة 3 أوض وصالة ومطبخ وحمام",
-            imageUrl: "/images/1.jpg",
+            images:[
+            "/images/1.jpg",
+            "/images/1-1.jpg", // Add more images here
+            "/images/1-2.jpg",
+            "/images/1-3.jpg",
+            "/images/1-4.jpg",
+            "/images/1-5.jpg",
+        
+            ],
+
+        
             deletedPrice: "15,000",
             price: "10,000",
             tags: ['best', 'all']
@@ -15,7 +30,16 @@ import Link from 'next/link';
             id: 2,
             title: "الحي الأول",
             description: "شقة 3 أوض وصالة ومطبخ وحمام",
-            imageUrl: "/images/2.jpg",
+            images:[
+            "/images/1.jpg",
+            "/images/1-1.jpg", // Add more images here
+            "/images/1-2.jpg",
+            "/images/1-3.jpg",
+            "/images/1-4.jpg",
+            "/images/1-5.jpg",
+        
+            ],
+
             deletedPrice: "12,000",
             price: "9,000",
             tags: ['new', 'all']
@@ -25,7 +49,16 @@ import Link from 'next/link';
             id: 3,
             title: "الحي الأول",
             description: "شقة 3 أوض وصالة ومطبخ وحمام",
-            imageUrl: "/images/1.jpg",
+            images:[
+            "/images/1.jpg",
+            "/images/1-1.jpg", // Add more images here
+            "/images/1-2.jpg",
+            "/images/1-3.jpg",
+            "/images/1-4.jpg",
+            "/images/1-5.jpg",
+        
+            ],
+
             deletedPrice: "18,000",
             price: "12,000",
             tags: ['best', 'all']
@@ -36,7 +69,16 @@ import Link from 'next/link';
             id: 4,
             title: "الحي الأول",
             description: "شقة 3 أوض وصالة ومطبخ وحمام",
-            imageUrl: "/images/1.jpg",
+            images:[
+            "/images/1.jpg",
+            "/images/1-1.jpg", // Add more images here
+            "/images/1-2.jpg",
+            "/images/1-3.jpg",
+            "/images/1-4.jpg",
+            "/images/1-5.jpg",
+        
+            ],
+
             deletedPrice: "20,000",
             price: "15,000",
             tags: ['new', 'all']
@@ -45,16 +87,40 @@ import Link from 'next/link';
             id: 5,
             title: "الحي الأول",
             description: "شقة 3 أوض وصالة ومطبخ وحمام",
-            imageUrl: "/images/1.jpg",
+            images:[
+            "/images/1.jpg",
+            "/images/1-1.jpg", // Add more images here
+            "/images/1-2.jpg",
+            "/images/1-3.jpg",
+            "/images/1-4.jpg",
+            "/images/1-5.jpg",
+        
+            ],
+        
+   
+        
             deletedPrice: "15,000",
             price: "10,000",
             tags: ['best', 'all']
         },
+
+
+
         {
             id: 6,
             title: "الحي الأول",
             description: "شقة 3 أوض وصالة ومطبخ وحمام",
-            imageUrl: "/images/1.jpg",
+            images:[
+            "/images/1.jpg",
+            "/images/1-1.jpg", // Add more images here
+            "/images/1-2.jpg",
+            "/images/1-3.jpg",
+            "/images/1-4.jpg",
+            "/images/1-5.jpg",
+        
+            ],
+
+
             deletedPrice: "15,000",
             price: "10,000",
             tags: ['new', 'all']
@@ -64,31 +130,34 @@ import Link from 'next/link';
 
 
 const ApartmentDetailPage = ({ params }) => {
-    // 1. Get the ID from the URL parameters
-    const { id } = params;
+    const resolvedParams = React.use(params);
+    const { id } = resolvedParams;
+    
+    // The rest of your code remains the same
     const apartmentId = parseInt(id, 10);
-
-    // 2. Find the apartment in your data
     const apartment = apartments.find(apt => apt.id === apartmentId);
 
-    // 3. Handle case where the apartment is not found
     if (!apartment) {
-        // next/navigation's notFound() will display a 404 page
-        notFound(); 
+        return <div>Apartment not found</div>;
     }
+    const slidesData = apartment.images.map((imageUrl, index) => ({
+        url: imageUrl,
+        title: `صورة الشقة ${index + 1}`, // Add a title for accessibility
+    }));
+ 
 
-    // 4. Render the details of the found apartment
     return (
-        <main className="p-8" dir="rtl">
-            <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden">
-                <div className="relative h-96">
-                    <img
-                        src={apartment.imageUrl}
-                        alt={apartment.title}
-                        className="w-full h-full object-cover"
-                    />
+        <main className="p-8 h-full" dir="rtl">
+            <div className="grid grid-cols-12 gap-3 justify-between items-center bg-white rounded-lg shadow-xl ">
+                <div className="relative h-96 col-span-6">
+
+                    <ImageSlider slides={slidesData} ></ImageSlider>
+
+
+
                 </div>
-                <div className="p-6">
+
+                <div className="p-6 col-span-6">
                     <h1 className="text-4xl font-extrabold text-gray-800 mb-4">{apartment.title}</h1>
                     <p className="text-2xl text-gray-600 mb-6">{apartment.description}</p>
                     <div className="flex items-baseline mb-6">

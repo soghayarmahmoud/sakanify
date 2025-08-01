@@ -49,6 +49,14 @@ body {
   color: #ccc;
 }
 
+.each-slide-effect > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  height: 384px; /* Matches the h-96 class in Tailwind */
+}
+
 /* globals.css or animations.css */
 
 @keyframes fadeIn {
