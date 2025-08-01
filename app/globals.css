@@ -35,13 +35,10 @@ body {
   color: #444;
 }
 
-.bg-primary{
+.primary{
   background-color: #F43F5E;
 }
 
-.fore-primary{
-  color: #F43F5E;
-}
 
 /* Dark theme class name */
 
@@ -50,4 +47,34 @@ body {
 }
 .desc-dark{
   color: #ccc;
+}
+
+/* globals.css or animations.css */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 2s ease-in-out forwards; /* Adjust duration and easing as needed */
+}
+
+@keyframes fadeInSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Starts 20px below its final position */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);    /* Ends at its original position */
+  }
+}
+
+.animate-fade-in-slide-up {
+  animation: fadeInSlideUp 2s ease-out forwards;
 }
